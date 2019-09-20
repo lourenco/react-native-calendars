@@ -10,7 +10,7 @@ import {CHANGE_MONTH_LEFT_ARROW, CHANGE_MONTH_RIGHT_ARROW} from '../../testIDs';
 
 class CalendarHeader extends Component {
   static displayName = 'IGNORE';
-  
+
   static propTypes = {
     theme: PropTypes.object,
     hideArrows: PropTypes.bool,
@@ -96,7 +96,7 @@ class CalendarHeader extends Component {
           onPress={this.onPressLeft}
           style={this.style.arrow}
           hitSlop={{left: 20, right: 20, top: 20, bottom: 20}}
-          testID={testID ? `${CHANGE_MONTH_LEFT_ARROW}-${testID}`: CHANGE_MONTH_LEFT_ARROW}
+          testID={testID ? `${CHANGE_MONTH_LEFT_ARROW}-${testID}` : CHANGE_MONTH_LEFT_ARROW}
         >
           {this.props.renderArrow
             ? this.props.renderArrow('left')
@@ -111,7 +111,7 @@ class CalendarHeader extends Component {
           onPress={this.onPressRight}
           style={this.style.arrow}
           hitSlop={{left: 20, right: 20, top: 20, bottom: 20}}
-          testID={testID ? `${CHANGE_MONTH_RIGHT_ARROW}-${testID}`: CHANGE_MONTH_RIGHT_ARROW}
+          testID={testID ? `${CHANGE_MONTH_RIGHT_ARROW}-${testID}` : CHANGE_MONTH_RIGHT_ARROW}
         >
           {this.props.renderArrow
             ? this.props.renderArrow('right')
@@ -125,32 +125,22 @@ class CalendarHeader extends Component {
 
     let indicator;
     if (this.props.showIndicator) {
-      indicator = <ActivityIndicator color={this.props.theme && this.props.theme.indicatorColor}/>;
+      indicator = <ActivityIndicator color={this.props.theme && this.props.theme.indicatorColor} />;
     }
 
     return (
       <View style={this.props.style}>
-        <View style={this.style.header}>
-          {leftArrow}
-          <View style={{ flexDirection: 'row' }}>
-            <Text allowFontScaling={false} style={this.style.monthText} accessibilityTraits='header'>
-              {this.props.month.toString(this.props.monthFormat)}
-            </Text>
-            {indicator}
-          </View>
-          {rightArrow}
-        </View>
         {
           !this.props.hideDayNames &&
           <View style={this.style.week}>
             {this.props.weekNumbers && <Text allowFontScaling={false} style={this.style.dayHeader}></Text>}
             {weekDaysNames.map((day, idx) => (
-              <Text 
-                allowFontScaling={false} 
-                key={idx} 
-                accessible={false} 
-                style={this.style.dayHeader} 
-                numberOfLines={1} 
+              <Text
+                allowFontScaling={false}
+                key={idx}
+                accessible={false}
+                style={this.style.dayHeader}
+                numberOfLines={1}
                 importantForAccessibility='no'
               >
                 {day}
